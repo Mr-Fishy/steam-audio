@@ -2,25 +2,15 @@ project(SteamAudio VERSION 4.5.3)
 
 # The following assumes that the platforms are x64
 if (APPLE)
-    set(SteamAudio_LIB_DIR "${CMAKE_CURRENT_SOURCE_DIR}/lib/osx/")
+    set(SteamAudio_LIB_DIR "${CMAKE_CURRENT_SOURCE_DIR}/lib/osx")
     set(SteamAudio_LIB_FILE "${SteamAudio_LIB_DIR}/phonon.dylib")
 elseif (WIN32)
-    set(SteamAudio_LIB_DIR "${CMAKE_CURRENT_SOURCE_DIR}/lib/windows-x64/")
+    set(SteamAudio_LIB_DIR "${CMAKE_CURRENT_SOURCE_DIR}/lib/windows-x64")
     set(SteamAudio_LIB_FILE "${SteamAudio_LIB_DIR}/phonon.dll")
 else ()
-    set(SteamAudio_LIB_DIR "${CMAKE_CURRENT_SOURCE_DIR}/lib/linux-x64/")
+    set(SteamAudio_LIB_DIR "${CMAKE_CURRENT_SOURCE_DIR}/lib/linux-x64")
     set(SteamAudio_LIB_FILE "${SteamAudio_LIB_DIR}/phonon.so")
 endif ()
-
-add_custom_command(
-    OUTPUT ${SteamAudio_LIB_FILE}
-    COMMAND make
-    WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-)
-
-add_custom_target(
-    SteamAudioTarget DEPENDS ${SteamAudio_LIB_FILE}
-)
 
 add_library(
     ${PROJECT_NAME} SHARED IMPORTED GLOBAL
