@@ -9,7 +9,7 @@ elseif (WIN32)
     set(SteamAudio_LIB_FILE "${SteamAudio_LIB_DIR}/phonon.dll")
 else ()
     set(SteamAudio_LIB_DIR "${CMAKE_CURRENT_SOURCE_DIR}/lib/linux-x64")
-    set(SteamAudio_LIB_FILE "${SteamAudio_LIB_DIR}/phonon.so")
+    set(SteamAudio_LIB_FILE "${SteamAudio_LIB_DIR}/libphonon.so")
 endif ()
 
 add_library(
